@@ -27,7 +27,7 @@ from requests import get
 # In[ ]:
 os.chdir("C:\\Users\\Jothimani\\Documents\\GR")
 
-if not os.path.exists('book_data.csv'):
+if not os.path.exists('book_data_11_1.csv'):
     book_data=pd.DataFrame(columns=[#'image_url',
     'book_title',
     'book_series',
@@ -43,11 +43,11 @@ if not os.path.exists('book_data.csv'):
     'genres',
     'genre_count'
   ])
-    book_data.to_csv('book_data.csv')
+    book_data.to_csv('book_data_11_1.csv')
 
-books=pd.read_csv(r'books_900.csv')
-#books = books[0:2]
-book_data=pd.read_csv('book_data.csv')
+books=pd.read_csv(r'books_4100.csv')
+#books = books[141:]
+book_data=pd.read_csv('book_data_11_1.csv')
 
 
 # In[ ]:
@@ -144,13 +144,14 @@ for i in range(len(book_data), len(books)):
         #Count of genre
         genre_count = book_soup.find_all('a', attrs = {'class':'actionLinkLite greyText bookPageGenreLink'})
         book['genre_count'] = '|'.join([i.text for i in genre_count])
+        
         book_rows.append(book)
         
 #https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file        
         if i%save_every==0:
-            book_data.append(pd.DataFrame.from_dict(book_rows), sort = False).to_csv('book_data.csv', index=False, mode = 'a', header = False)
+            book_data.append(pd.DataFrame.from_dict(book_rows), sort = False).to_csv('book_data_11_1.csv', index=False, mode = 'a', header = False)
             book_rows=[]
     except:
-        book_data.append(pd.DataFrame.from_dict(book_rows), sort = False).to_csv('book_data.csv', index=False, mode = 'a', header = False)
+        book_data.append(pd.DataFrame.from_dict(book_rows), sort = False).to_csv('book_data_11_1.csv', index=False, mode = 'a', header = False)
         book_rows=[]
 
