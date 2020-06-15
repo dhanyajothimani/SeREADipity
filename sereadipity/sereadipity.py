@@ -5,6 +5,8 @@ Created on Thu Jun 11 23:44:47 2020
 @author: Jothimani
 """
 
+#Ref: https://medium.com/analytics-vidhya/how-to-deploy-a-streamlit-app-with-heroku-5f76a809ec2e
+
 import streamlit as st
 import pandas as pd
 import numpy as np
