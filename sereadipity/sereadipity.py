@@ -9,7 +9,7 @@ Created on Thu Jun 11 23:44:47 2020
 
 import streamlit as st
 import pandas as pd
-import numpy as np
+
 
 from sklearn import preprocessing
 
@@ -35,7 +35,7 @@ if not sys.warnoptions:
 '''
 # Welcome to SeREADipity!
 
-Pick a book you love- and the choices that guide your reading - and explore where the connections take you...
+### Pick a book you love- and the choices that guide your reading - and explore where the connections take you...
 '''
 
 #recommendation_data = st.cache(pd.read_csv)("consolidated_results.csv")
@@ -52,7 +52,7 @@ user_input = st.text_input('I enjoyed reading:')
 #st.write('The Entered URL is', url)
 
 '''
-Find me book that... 
+### Find me book that... 
 '''
 
 sim_imp = st.slider("have a similar plot: ", min_value=0, max_value=10, value=5, step=1)
@@ -109,7 +109,7 @@ recom_books = final_score_sorted["book_comp"].head(10)
 recom_books = recom_books.reset_index()
 #recom_books.to_string(index=False)
 '''
-You may enjoy: 
+### You may enjoy: 
 '''
 st.write("    1: ", recom_books.loc[0]["book_comp"])
 st.write("    2: ", recom_books.loc[1]["book_comp"])
