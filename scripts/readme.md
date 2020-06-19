@@ -11,4 +11,4 @@ Calculation of Similarity Metrics and Recommendation Engine
 
 **05_consolidation.py**: Compiles four metrics - synopis similarity, genre similarity, style similarity and award metric.
 
-**06_final_recommendation.py**: Calculates the final similarity for book using all similarity metrics and user inputs.
+**06_final_recommendation.py**: Calculates the final similarity for book using all similarity metrics and user inputs, and recommends top 10 books.
