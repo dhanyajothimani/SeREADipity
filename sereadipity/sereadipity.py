@@ -57,7 +57,7 @@ user_input = st.text_input('I enjoyed reading:')
 
 sim_imp = st.slider("have a similar plot: ", min_value=0, max_value=10, value=5, step=1)
 
-years_imp = st.slider("have a similar writing style: ", min_value=0, max_value=10, value=5, step=1)
+years_imp = st.slider("are from similar literary period: ", min_value=0, max_value=10, value=5, step=1)
 
 genre_imp = st.slider("are on similar topics", min_value=0, max_value=10, value=5, step=1)
 
