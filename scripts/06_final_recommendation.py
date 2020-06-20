@@ -4,7 +4,6 @@ Created on Thu Jun 11 01:29:21 2020
 
 @author: Jothimani
 """
-
 import pandas as pd
 import os 
 from sklearn import preprocessing
@@ -53,7 +52,7 @@ recom_user["scaled_genre"] = y_scaled
 
 
 
-def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
+def final_score(df, award_weight, genre_weight, years_weight, sim_weight):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
@@ -64,12 +63,8 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
     
     
     
-final_score_df = final_score(recom_user,award_imp, genre_imp, years_imp, sim_imp )
+final_score_df = final_score(recom_user,award_weight, genre_weight, years_weight, sim_weight )
 print(final_score_df)
 
 final_score_sorted = final_score_df.sort_values('final_score', ascending = False)
 print(final_score_sorted["book_comp"].head(10))
-
-
-
-
