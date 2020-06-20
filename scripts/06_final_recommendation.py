@@ -7,7 +7,6 @@ Created on Thu Jun 11 01:29:21 2020
 
 import pandas as pd
 import os 
-import numpy as np
 from sklearn import preprocessing
 
 
@@ -22,11 +21,18 @@ os.chdir("C:/Users/Jothimani/Documents/GR")
 recommendation_data = pd.read_csv("consolidated_results.csv") 
 recommendation_data.shape
 
-user_input = "Gone with the Wind"
-award_imp = 2
-genre_imp = 9
-years_imp = 0
-sim_imp = 9 
+user_input = "The Great Gatsby"
+award_imp = 0
+genre_imp = 0
+years_imp = 10
+sim_imp = 0
+
+total_imp = award_imp + genre_imp + years_imp + sim_imp
+
+award_weight = award_imp/total_imp
+genre_weight = genre_imp/total_imp
+years_weight = years_imp/total_imp
+sim_weight = sim_imp/total_imp
 
 recommendation_data["final_score"] = ""
 
@@ -51,7 +57,7 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
-        df.at[i,"final_score"] = ((award_imp/10) * df.loc[i]["award"]) + ((genre_imp/10) * df.loc[i]["scaled_genre"])+((years_imp/10) * df.loc[i]["scaled_year"])+((sim_imp/10) * float(df.loc[i]["sim_score"]))
+        df.at[i,"final_score"] = (award_weight * df.loc[i]["award"]) + (genre_weight * df.loc[i]["scaled_genre"])+(years_weight * df.loc[i]["years"])+(sim_weight * float(df.loc[i]["sim_score"]))
         print(df.at[i,"final_score"])
      
     return(df)
