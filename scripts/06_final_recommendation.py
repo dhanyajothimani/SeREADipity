@@ -44,11 +44,6 @@ x = recom_user[['years']].values.astype(float)
 min_max_scaler = preprocessing.MinMaxScaler()
 x_scaled = min_max_scaler.fit_transform(x)
 recom_user["scaled_year"] = x_scaled
-
-y = recom_user[['genre_sim']].values.astype(float)
-min_max_scaler = preprocessing.MinMaxScaler()
-y_scaled = min_max_scaler.fit_transform(y)
-recom_user["scaled_genre"] = y_scaled
 recom_user["year_sim"] = 1 - recom_user["scaled_year"]
 
 
@@ -57,7 +52,7 @@ def final_score(df, award_weight, genre_weight, years_weight, sim_weight):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
-        df.at[i,"final_score"] = (award_weight * df.loc[i]["award"]) + (genre_weight * df.loc[i]["scaled_genre"])+(years_weight * df.loc[i]["year_sim"])+(sim_weight * float(df.loc[i]["sim_score"]))
+        df.at[i,"final_score"] = (award_weight * df.loc[i]["award"]) + (genre_weight * df.loc[i]["genre_sim"])+(years_weight * df.loc[i]["year_sim"])+(sim_weight * float(df.loc[i]["sim_score"]))
         print(df.at[i,"final_score"])
      
     return(df)
