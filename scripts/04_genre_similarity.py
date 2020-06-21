@@ -4,7 +4,6 @@ Created on Sun Jun  7 18:20:59 2020
 
 @author: Jothimani
 """
-
 import pandas as pd 
 import numpy as np 
 import os 
@@ -23,11 +22,10 @@ os.chdir("C:\\Users\\Jothimani\\Documents\\GR\\")
 
 
 genre_db = pd.read_csv("genre_database.csv")
-            
-#uniqueValues = (genre_db['genre0'].append(genre_db['genre1'])).unique()
-#uniqueValues1 = (pd.Series(uniqueValues).append(genre_db['genre2'])).unique()
-#uniqueValues.sort()
 
+
+
+#Get unique genres from the dataset
 def unique_values(df):
     
     unique_dict = pd.DataFrame()
@@ -47,13 +45,15 @@ def unique_values(df):
      #Remove 
     cleaned_genre = [x for x in unique_dict if str(x) != 'nan']           
     return(cleaned_genre)
-
+    
+    
+#Get the word embeddings for each genre
 def genre_space(genre_list):
     vector_space = []
     
     for i in genre_list:
         try:
-            doc = nlp("u'"+i+"'")
+            doc = nlp(i)
             vector_space.append((i, doc.vector))
         except:
             continue
@@ -79,6 +79,8 @@ type(genre_parameter)
 genre_parameter.rename(columns={ genre_parameter.columns[0]: "genre"}, inplace = True)
 genre_parameter.rename(columns={ genre_parameter.columns[1]: "genre_value"}, inplace = True)
 
+
+#Replace the genre with the genre vector embeddings for each book
 def genre_vector(df, dict1):
     df1 =df.copy()
     for i in range(df1.shape[0]):
@@ -110,6 +112,7 @@ gpd = genre_parameter.set_index('genre')['genre_value'].to_dict()
 book_genre_df = genre_vector((genre_db1.drop(["book_title"], axis =1)), gpd)
 book_genre_df_test = genre_vector(genre_db1, gpd)
 
+#for each book, obtain the genre vector embeddings by taking the weighted sum of vectors of all genres
 
 def vector_sum(df, dict1):
     df1 = df.copy()
@@ -145,10 +148,12 @@ def vector_sum(df, dict1):
     print(df1.shape)
     return(df1) 
 
-cumm_sum = vector_sum(genre_db1, gpd)         
+cumm_sum = vector_sum(genre_db1, gpd)       
+
+cumm_sum["d_norm"]= [cumm_sum.loc[i]["n_col"]/LA.norm(cumm_sum.loc[i]["n_col"]) for i in range(cumm_sum.shape[0])]
                 
 
-
+#Obtaining the genre similarity of two books
 def genre_diff(df, column_name):
     df1 = pd.DataFrame()
     df1["book_title"] = ""
@@ -182,22 +187,6 @@ def genre_diff(df, column_name):
     print(df2)
     return(df2)
 
-genre_dist = genre_diff(cumm_sum, "n_col")
+genre_dist = genre_diff(cumm_sum, "d_norm")
 genre_dist.to_csv("genre_db.csv")
 
-#import gensim.downloader as api
-#corpus = api.load('text8')
-#from gensim.models.word2vec import Word2Vec
-#model = Word2Vec(corpus, min_count=1)
-#print(model.most_similar('tree'))
-#print(model.similarity('tree','leaf'))
-#
-#model1 = api.load("glove-wiki-gigaword-50")
-#print(model.most_similar("glass"))
-#print(model1.similarity('tree','leaf'))
-#
-#vector = model['Fiction']
-#vector.shape
-#vector1 = model1['Science Fiction']
-#vector1.shape
-#vector3 = model['car']
