@@ -94,12 +94,17 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
-        df.at[i,"final_score"] = ((award_imp/10) * df.loc[i]["award"]) + ((genre_imp/10) * df.loc[i]["genre_sim"])+((years_imp/10) * df.loc[i]["year_sim"])+((sim_imp/10) * float(df.loc[i]["sim_score"]))
+        df.at[i,"final_score"] = (award_imp/10 * df.loc[i]["award"]) + (genre_imp * df.loc[i]["genre_sim"])+(years_imp/10 * df.loc[i]["year_sim"])+(sim_imp/10 * float(df.loc[i]["sim_score"]))
         print(df.at[i,"final_score"])
      
     return(df)
     
     
+total_imp = (award_imp + genre_imp + years_imp + sim_imp)
+award_imp = award_imp/total_imp
+genre_imp = genre_imp/total_imp
+years_imp = years_imp/total_imp
+sim_imp = sim_imp/total_imp
     
 final_score_df = final_score(recom_user,award_imp, genre_imp, years_imp, sim_imp )
 #print(final_score_df)
@@ -109,6 +114,9 @@ final_score_sorted = final_score_df.sort_values('final_score', ascending = False
 recom_books = final_score_sorted["book_comp"].head(10)
 recom_books = recom_books.reset_index()
 #recom_books.to_string(index=False)
+
+
+st.write("Weights used in the recommendation algorithm for plots, similar topics, literary period, and award-winning authors:", round(sim_imp,2),",", round(genre_imp,2),",", round(years_imp,2),",", round(award_imp,2)) 
 
 
 '''
@@ -129,6 +137,6 @@ st.write("   10: ", recom_books.loc[9]["book_comp"])
 
 
 
-#'''
-#© Dhanya Jothimani 2020 
-#'''
+'''
+##### © Dhanya Jothimani 2020 
+'''
