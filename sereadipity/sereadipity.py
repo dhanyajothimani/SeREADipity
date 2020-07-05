@@ -48,11 +48,15 @@ def load_data():
 # Will only run once if already cached
 recommendation_data1 = load_data()
 
-user_input = st.text_input('I enjoyed reading:')
-#st.write('The Entered URL is', url)
+cols = recommendation_data1.book_title.unique()
+options = list(cols)
 
+
+user_input = st.multiselect("I enjoyed reading:", options = options, default= options[0:1])
+
+    
 '''
-### Find me book that... 
+### Find me books that... 
 '''
 
 sim_imp = st.slider("have a similar plot: ", min_value=0, max_value=10, value=5, step=1)
@@ -68,24 +72,21 @@ recommendation_data = recommendation_data1.copy()
 recommendation_data["final_score"] = ""
 
 
-#recommendation_data.filter(regex=user_input)
-is_book = recommendation_data['book_title']==user_input
+is_book = recommendation_data['book_title']==user_input[0]
 recom_user =  recommendation_data[is_book]
-
-#if is_book.empty or is_book.bool():
-#    st.write(user_input," is not found in our database.")
-#else:
-#    recom_user = recommendation_data[is_book]
 
 x = recom_user[['years']].values.astype(float)
 min_max_scaler = preprocessing.MinMaxScaler()
 x_scaled = min_max_scaler.fit_transform(x)
 recom_user["scaled_year"] = x_scaled
+#max_x = max(x)
+#recom_user["scaled_year"] = [i/max_x for i in x]
+recom_user["year_sim"] = 1 - recom_user["scaled_year"]
 
-y = recom_user[['genre_sim']].values.astype(float)
-min_max_scaler = preprocessing.MinMaxScaler()
-y_scaled = min_max_scaler.fit_transform(y)
-recom_user["scaled_genre"] = y_scaled
+recom_user["year_sim"] = recom_user["year_sim"].fillna(0)
+recom_user["award"] = recom_user["award"].fillna(0)
+recom_user["genre_sim"] = recom_user["genre_sim"].fillna(0)
+recom_user["sim_score"] = recom_user["sim_score"].fillna(0)
 
 
 
@@ -93,7 +94,7 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
-        df.at[i,"final_score"] = ((award_imp/10) * df.loc[i]["award"]) + ((genre_imp/10) * df.loc[i]["scaled_genre"])+((years_imp/10) * df.loc[i]["scaled_year"])+((sim_imp/10) * float(df.loc[i]["sim_score"]))
+        df.at[i,"final_score"] = ((award_imp/10) * df.loc[i]["award"]) + ((genre_imp/10) * df.loc[i]["genre_sim"])+((years_imp/10) * df.loc[i]["year_sim"])+((sim_imp/10) * float(df.loc[i]["sim_score"]))
         print(df.at[i,"final_score"])
      
     return(df)
@@ -108,6 +109,8 @@ final_score_sorted = final_score_df.sort_values('final_score', ascending = False
 recom_books = final_score_sorted["book_comp"].head(10)
 recom_books = recom_books.reset_index()
 #recom_books.to_string(index=False)
+
+
 '''
 ### You may enjoy: 
 '''
