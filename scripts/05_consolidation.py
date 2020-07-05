@@ -32,8 +32,8 @@ consolidated_results = reduce(lambda  left,right: pd.merge(left,right,on=['book_
 
 # if you want to fill the values that don't exist in the lines of merged dataframe simply fill with required strings as
 
-consolidated_results = reduce(lambda  left,right: pd.merge(left,right,on=['book_title', 'book_comp'],
-                                            how='outer'), data_frames).fillna(0)
+#consolidated_results = reduce(lambda  left,right: pd.merge(left,right,on=['book_title', 'book_comp'],
+#                                            how='outer'), data_frames).fillna(0)
 
 consolidated_results = consolidated_results[["book_title", "book_comp", "award", "genre_sim", "years", "sim_score"]]
 
