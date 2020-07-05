@@ -94,7 +94,7 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
-        df.at[i,"final_score"] = (award_imp/10 * df.loc[i]["award"]) + (genre_imp * df.loc[i]["genre_sim"])+(years_imp/10 * df.loc[i]["year_sim"])+(sim_imp/10 * float(df.loc[i]["sim_score"]))
+        df.at[i,"final_score"] = (award_imp * df.loc[i]["award"]) + (genre_imp * df.loc[i]["genre_sim"])+(years_imp * df.loc[i]["year_sim"])+(sim_imp * float(df.loc[i]["sim_score"]))
         print(df.at[i,"final_score"])
      
     return(df)
