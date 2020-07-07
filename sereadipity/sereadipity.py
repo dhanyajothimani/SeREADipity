@@ -9,8 +9,6 @@ Created on Thu Jun 11 23:44:47 2020
 
 import streamlit as st
 import pandas as pd
-
-
 from sklearn import preprocessing
 
 
@@ -52,7 +50,7 @@ cols = recommendation_data1.book_title.unique()
 options = list(cols)
 
 
-user_input = st.multiselect("I enjoyed reading:", options = options, default= options[0:1])
+user_input = st.multiselect("I enjoyed reading:", options = options, default= options[6768:6769])
 
     
 '''
@@ -82,11 +80,12 @@ recom_user["scaled_year"] = x_scaled
 #max_x = max(x)
 #recom_user["scaled_year"] = [i/max_x for i in x]
 recom_user["year_sim"] = 1 - recom_user["scaled_year"]
+recom_user["genre_sim_new"] = 1 - recom_user["genre_sim"]
 
 recom_user["year_sim"] = recom_user["year_sim"].fillna(0)
 recom_user["award"] = recom_user["award"].fillna(0)
-recom_user["genre_sim"] = recom_user["genre_sim"].fillna(0)
-recom_user["sim_score"] = recom_user["sim_score"].fillna(0)
+recom_user["genre_sim_new"] = recom_user["genre_sim_new"].fillna(0)
+recom_user["synopsis_sim"] = recom_user["synopsis_sim"].fillna(0)
 
 
 
@@ -94,7 +93,7 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
     df = df.reset_index()
     for i in range(df.shape[0]):
         print(i)
-        df.at[i,"final_score"] = (award_imp * df.loc[i]["award"]) + (genre_imp * df.loc[i]["genre_sim"])+(years_imp * df.loc[i]["year_sim"])+(sim_imp * float(df.loc[i]["sim_score"]))
+        df.at[i,"final_score"] = (award_imp * df.loc[i]["award"]) + (genre_imp * df.loc[i]["genre_sim_new"])+(years_imp * df.loc[i]["year_sim"])+(sim_imp * float(df.loc[i]["synopsis_sim"]))
         print(df.at[i,"final_score"])
      
     return(df)
@@ -116,7 +115,7 @@ recom_books = recom_books.reset_index()
 #recom_books.to_string(index=False)
 
 
-st.write("Weights used in the recommendation algorithm for plots, similar topics, literary period, and award-winning authors:", round(sim_imp,2),",", round(genre_imp,2),",", round(years_imp,2),",", round(award_imp,2)) 
+st.write("Weights used in the recommendation algorithm for similar plots, literary period, topics, and award-winning authors:", round(sim_imp,2),",", round(years_imp,2),",", round(genre_imp,2),", and", round(award_imp,2)) 
 
 
 '''
