@@ -50,7 +50,7 @@ cols = recommendation_data1.book_title.unique()
 options = list(cols)
 
 
-user_input = st.multiselect("I enjoyed reading:", options = options, default= options[6768:6769])
+user_input = st.multiselect("I enjoyed reading:", options = options, default= options[0:1])
 
     
 '''
