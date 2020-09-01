@@ -1,7 +1,7 @@
-# SeREADipity
+## SeREADipity
 
 
-## Acknowledgments
+### Acknowledgments
 
 
 
