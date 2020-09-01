@@ -6,7 +6,7 @@
 
 SeREADipity is a personalised book recommendation system that allows the users to rate their preferences (on the scale of 1 to 10) on various criteria - synopsis, literary period, genre and book by an award-winning author. 
 
-SeREADipity uses close to 9,000 books and corresponding author details from GoodReads and Wikipedia, respectively. 
+SeREADipity uses close to 9,000 books (after data cleaning) and corresponding author details from GoodReads and Wikipedia, respectively. 
 
 For each criterion, the similarity metric is calculated. Synopsis and genre similarities are obtained using cosine similarity and BERT. Literary period similarity is calculated as a mathematical function based on the years in which the authors were active. Award metric is designated as a binary variable. Based on the user's preferences, SeREADipidity recommends 10 books based on overall similarity score. The overall similarity score is calculated as a linear function of synopsis similatiy, literary period similarity, genre similarity and award metric.  
 
