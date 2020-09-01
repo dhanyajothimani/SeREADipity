@@ -10,6 +10,8 @@ For each criterion, the similarity metric is calculated. Synopsis and genre simi
 
 More details on the pipeline can be found [here](https://docs.google.com/presentation/d/1MznAeNaxGhhwfCA7KLQ7lKF5eAKheXIELDOAXApF-ds/edit#slide=id.g892ebf7653_0_2660).
 
+Following is the screenshot of the book recommendations for **The Origin of Species** based on similar genre. (Note: This serves as a validation that recommendations are not random and in fact, makes sense)
+
 ![book_recom_genre](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/recom_genre.png)
 
 ## Pre-requisites 
