@@ -14,6 +14,10 @@ Following is the screenshot of the book recommendations for **The Origin of Spec
 
 ![book_recom_genre](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/recom_genre.png)<!-- .element height="50%" width="50%" -->
 
+<kbd>
+  <img src="https://github.com/dhanyajothimani/SeREADipity/blob/master/images/recom_genre.png">
+</kbd>
+
 ## Pre-requisites 
  
  -- pandas==0.24.2
