@@ -1,4 +1,4 @@
-![sereadipity](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/user_preferences.png)
+![sereadipity](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/user_preferences.png =250x250 )
 
 ## SeREADipity
 
