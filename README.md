@@ -2,7 +2,7 @@
 
 ## SeREADipity
 
-SeREADipity is a personalised book recommendation system that allows the users to rate their preferences (on the scale of 1 to 10) on various criteria - synopsis, literary period, genre and book by an award winning author. 
+SeREADipity is a personalised book recommendation system that allows the users to rate their preferences (on the scale of 1 to 10) on various criteria - synopsis, literary period, genre and book by an award-winning author. 
 
 SeREADipity uses close to 9,000 books and corresponding author details from GoodReads and Wikipedia, respectively. 
 
