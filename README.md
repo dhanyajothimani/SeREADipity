@@ -1,4 +1,6 @@
-![sereadipity](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/user_preferences.png)<!-- .element height="50%" width="50%" -->
+<kbd>
+  <img src="https://github.com/dhanyajothimani/SeREADipity/blob/master/images/user_preferences.png">
+</kbd>
 
 ## SeREADipity
 
