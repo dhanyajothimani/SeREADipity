@@ -20,9 +20,9 @@ Following is the screenshot of the book recommendations for **The Origin of Spec
 
 ## Pre-requisites 
  
- -- pandas==0.24.2
- -- scikit_learn==0.23.1
- -- streamlit==0.62.1
+ * pandas==0.24.2
+ * scikit_learn==0.23.1
+ * streamlit==0.62.1
 
 ## To Run the App Locally 
 
