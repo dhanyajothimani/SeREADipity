@@ -1,3 +1,5 @@
+![sereadipity](/images/user_preferences.png)
+
 ## SeREADipity
 
 
