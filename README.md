@@ -1,8 +1,10 @@
-![sereadipity](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/user_preferences.png)<!-- .element height="50%" width="50%" -->
+<kbd>
+  <img src="https://github.com/dhanyajothimani/SeREADipity/blob/master/images/user_preferences.png">
+</kbd>
 
 ## SeREADipity
 
-SeREADipity is a personalised book recommendation system that allows the users to rate their preferences (on the scale of 1 to 10) on various criteria - synopsis, literary period, genre and book by an award winning author. 
+SeREADipity is a personalised book recommendation system that allows the users to rate their preferences (on the scale of 1 to 10) on various criteria - synopsis, literary period, genre and book by an award-winning author. 
 
 SeREADipity uses close to 9,000 books and corresponding author details from GoodReads and Wikipedia, respectively. 
 
@@ -10,9 +12,11 @@ For each criterion, the similarity metric is calculated. Synopsis and genre simi
 
 More details on the pipeline can be found [here](https://docs.google.com/presentation/d/1MznAeNaxGhhwfCA7KLQ7lKF5eAKheXIELDOAXApF-ds/edit#slide=id.g892ebf7653_0_2660).
 
-Following is the screenshot of the book recommendations for **The Origin of Species** based on similar genre. (Note: This serves as a validation that recommendations are not random and in fact, makes sense)
+Following is the screenshot of the book recommendations for **The Origin of Species** based on similar genre. (Note: This serves as a validation that recommendations are not random and in fact, makes sense. Also, the user can select different values for each of the criterion simultaneously.)
 
-![book_recom_genre](https://github.com/dhanyajothimani/SeREADipity/blob/master/images/recom_genre.png)<!-- .element height="50%" width="50%" -->
+<kbd>
+  <img src="https://github.com/dhanyajothimani/SeREADipity/blob/master/images/recom_genre.png">
+</kbd>
 
 ## Pre-requisites 
  
