@@ -32,4 +32,4 @@ On the terminal, use the command `streamlit run sereadipity.py` to get a recomme
 
 ### Acknowledgments
 
-Many thanks to Niall, Chris and fellow Fellows at Insight for the continuous feedback starting from project ideation till final product. Also, a special thanks is due to Amma, Appa, Arjun, Papa and Mumma! :) 
+Many thanks to Niall, Chris, Payam and the fellow Fellows at Insight for the continuous feedback starting from project ideation till final product. Also, a special thanks is due to Amma, Appa, Arjun, Papa and Mumma! :) 
