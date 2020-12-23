@@ -1,1 +1,1 @@
-web: streamlit run --server.enableCORS false --server.port 8501 sereadipity.py
+web: sh setup.sh && streamlit run sereadipity.py
