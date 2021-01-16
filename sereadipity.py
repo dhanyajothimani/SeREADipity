@@ -45,7 +45,11 @@ def load_data():
     return df
 
 # Will only run once if already cached
-recommendation_data1 = load_data()
+# can be used once streamlit has git lfs access
+#recommendation_data1 = load_data()
+
+url = "https://drive.google.com/file/d/1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H/view?usp=sharing"
+recommendation_data1 = pd.read_csv(url)
 
 recommendation_data1.columns = recommendation_data1.columns.str.strip()
 
