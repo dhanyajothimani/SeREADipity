@@ -49,6 +49,8 @@ recommendation_data1 = load_data()
 
 recommendation_data1.columns = recommendation_data1.columns.str.strip()
 
+print(recommendation_data1.columns)
+
 cols = recommendation_data1.book_title.unique()
 options = list(cols)
 
