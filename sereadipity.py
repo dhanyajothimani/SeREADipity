@@ -47,6 +47,8 @@ def load_data():
 # Will only run once if already cached
 recommendation_data1 = load_data()
 
+recommendation_data1.columns = recommendation_data1.columns.str.strip()
+
 cols = recommendation_data1.book_title.unique()
 options = list(cols)
 
