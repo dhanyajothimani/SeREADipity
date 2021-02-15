@@ -37,11 +37,15 @@ if not sys.warnoptions:
 ### Pick a book you love- and the choices that guide your reading - and explore where the connections take you...
 '''
 
+url = 'https://drive.google.com/file/d/1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H/view?usp=sharing'
+path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+
 #recommendation_data = st.cache(pd.read_csv)("consolidated_results.csv")
 
 @st.cache(allow_output_mutation=True)
 def load_data():
-    df = pd.read_csv("consolidated_results.csv")
+    #df = pd.read_csv("consolidated_results.csv")
+    df = pd.read_csv(path)
     return df
 
 # Will only run once if already cached
