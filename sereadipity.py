@@ -57,11 +57,11 @@ def load_data():
     f_checkpoint = Path("model/consolidated_results.csv")
 
     if not f_checkpoint.exists():
-        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+        with st.spinner("Downloading data... this may take awhile! \n Don't stop it!"):
             from GD_download import download_file_from_google_drive
             download_file_from_google_drive(cloud_model_location, f_checkpoint)
     
-    df = pd.read_csv(f_checkpoint, map_location=device)
+    df = pd.read_csv(f_checkpoint)
     return model
     
 
