@@ -71,14 +71,14 @@ recommendation_data1 = load_data()
 
 recommendation_data1.columns = recommendation_data1.columns.str.strip()
 
-st.write(recommendation_data1.columns)
-st.write(recommendation_data1.head(5))
+#st.write(recommendation_data1.columns)
+#st.write(recommendation_data1.head(5))
 
 cols = recommendation_data1.book_title.unique()
 options = list(cols)
 
 
-user_input = st.multiselect("I enjoyed reading:", options = options, default= options[6768:6769])
+user_input = st.multiselect("I enjoyed reading:", options = options, default= options[100:101])
 
     
 '''
