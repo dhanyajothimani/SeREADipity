@@ -48,7 +48,8 @@ path = 'https://drive.google.com/u/0/uc?export=download&confirm=nnwJ&id=1Vme3Vrk
 # Hosted on my personal account until I figure something else out
 cloud_model_location = "1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H"
 
-#@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True)
+#@st.cache(allow_output_mutation=True)
 def load_data():
 
     save_dest = Path('model')
