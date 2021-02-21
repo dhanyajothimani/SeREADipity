@@ -37,19 +37,32 @@ if not sys.warnoptions:
 ### Pick a book you love- and the choices that guide your reading - and explore where the connections take you...
 '''
 
-#url = 'https://drive.google.com/file/d/1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H/view?usp=sharing'
-#path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 
 #https://drive.google.com/uc?export=download&id=1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H
 
 #recommendation_data = st.cache(pd.read_csv)("consolidated_results.csv")
 path = 'https://drive.google.com/u/0/uc?export=download&confirm=nnwJ&id=1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'
+    
+    
+# Hosted on my personal account until I figure something else out
+cloud_model_location = "1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H"
 
-@st.cache(allow_output_mutation=True)
+@st.cache
 def load_data():
-    #df = pd.read_csv("consolidated_results.csv")
-    df = pd.read_csv(path)
-    return df
+
+    save_dest = Path('model')
+    save_dest.mkdir(exist_ok=True)
+    
+    f_checkpoint = Path("model/consolidated_results.csv")
+
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from GD_download import download_file_from_google_drive
+            download_file_from_google_drive(cloud_model_location, f_checkpoint)
+    
+    df = pd.read_csv(f_checkpoint, map_location=device)
+    return model
+    
 
 # Will only run once if already cached
 # can be used once streamlit has git lfs access
