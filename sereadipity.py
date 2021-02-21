@@ -62,7 +62,7 @@ def load_data():
             download_file_from_google_drive(cloud_model_location, f_checkpoint)
     
     df = pd.read_csv(f_checkpoint)
-    return model
+    return df
     
 
 # Will only run once if already cached
