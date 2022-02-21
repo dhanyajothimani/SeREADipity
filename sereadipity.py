@@ -69,6 +69,7 @@ def load_data():
 # Will only run once if already cached
 # can be used once streamlit has git lfs access
 recommendation_data1 = load_data()
+st.write(type(recommendation_data1))
 
 #recommendation_data1.columns = recommendation_data1.columns.str.strip()
 
