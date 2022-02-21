@@ -10,6 +10,7 @@ Created on Thu Jun 11 23:44:47 2020
 import streamlit as st
 import pandas as pd
 import sklearn
+import torch
 from pathlib import Path
 from sklearn import preprocessing
 
@@ -62,8 +63,9 @@ def load_data():
             from GD_download import download_file_from_google_drive
             download_file_from_google_drive(cloud_model_location, f_checkpoint)
 
-    df = pd.read_csv(f_checkpoint)
-    return df
+    model = torch.load(f_checkpoint, map_location=device)
+    model.eval()
+    return model
 
 
 # Will only run once if already cached
