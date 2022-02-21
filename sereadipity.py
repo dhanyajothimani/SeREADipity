@@ -48,7 +48,8 @@ path = 'https://drive.google.com/u/0/uc?export=download&confirm=nnwJ&id=1Vme3Vrk
 
 # Hosted on my personal account until I figure something else out
 cloud_model_location = "1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H"
-
+# Streamlit sharing is CPU only
+device = torch.device('cpu')
 #@st.cache(suppress_st_warning=True)
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def load_data():
