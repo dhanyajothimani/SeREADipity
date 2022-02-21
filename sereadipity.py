@@ -65,6 +65,7 @@ def load_data():
             download_file_from_google_drive(cloud_model_location, f_checkpoint)
 
     model = torch.load(f_checkpoint, map_location=device)
+    st.write(model.head())
     model.eval()
     return model
 
