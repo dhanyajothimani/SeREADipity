@@ -71,7 +71,7 @@ def load_data():
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
-fileDownloaded = drive.CreateFile('id':'1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'})
+fileDownloaded = drive.CreateFile({'id':'1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'})
 fileDownloaded.GetContentFile('consolidated_results.csv')
 df = pd.read_csv('consolidated_results.csv', delimiter=',')
 df.head()
