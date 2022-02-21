@@ -43,8 +43,8 @@ if not sys.warnoptions:
 
 #recommendation_data = st.cache(pd.read_csv)("consolidated_results.csv")
 path = 'https://drive.google.com/u/0/uc?export=download&confirm=nnwJ&id=1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'
-    
-    
+
+
 # Hosted on my personal account until I figure something else out
 cloud_model_location = "1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H"
 
@@ -54,23 +54,23 @@ def load_data():
 
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
-    
+
     f_checkpoint = Path("model/consolidated_results.csv")
 
     if not f_checkpoint.exists():
         with st.spinner("Downloading data... this may take awhile! \n Don't stop it!"):
             from GD_download import download_file_from_google_drive
             download_file_from_google_drive(cloud_model_location, f_checkpoint)
-    
+
     df = pd.read_csv(f_checkpoint)
     return df
-    
+
 
 # Will only run once if already cached
 # can be used once streamlit has git lfs access
 recommendation_data1 = load_data()
 
-recommendation_data1.columns = recommendation_data1.columns.str.strip()
+#recommendation_data1.columns = recommendation_data1.columns.str.strip()
 
 #st.write(recommendation_data1.columns)
 #st.write(recommendation_data1.head(5))
@@ -81,9 +81,9 @@ options = list(cols)
 
 user_input = st.multiselect("I enjoyed reading:", options = options, default= options[100:101])
 
-    
+
 '''
-### Find me books that... 
+### Find me books that...
 '''
 
 sim_imp = st.slider("have a similar plot: ", min_value=0, max_value=10, value=5, step=1)
@@ -124,16 +124,16 @@ def final_score(df, award_imp, genre_imp, years_imp, sim_imp):
         print(i)
         df.at[i,"final_score"] = (award_imp * df.loc[i]["award"]) + (genre_imp * df.loc[i]["genre_sim_new"])+(years_imp * df.loc[i]["year_sim"])+(sim_imp * float(df.loc[i]["synopsis_sim"]))
         print(df.at[i,"final_score"])
-     
+
     return(df)
-    
-    
+
+
 total_imp = (award_imp + genre_imp + years_imp + sim_imp)
 award_imp = award_imp/total_imp
 genre_imp = genre_imp/total_imp
 years_imp = years_imp/total_imp
 sim_imp = sim_imp/total_imp
-    
+
 final_score_df = final_score(recom_user,award_imp, genre_imp, years_imp, sim_imp )
 #print(final_score_df)
 
@@ -144,11 +144,11 @@ recom_books = recom_books.reset_index()
 #recom_books.to_string(index=False)
 
 
-st.write("Weights used in the recommendation algorithm for similar plots, literary period, topics, and award-winning authors:", round(sim_imp,2),",", round(years_imp,2),",", round(genre_imp,2),", and", round(award_imp,2)) 
+st.write("Weights used in the recommendation algorithm for similar plots, literary period, topics, and award-winning authors:", round(sim_imp,2),",", round(years_imp,2),",", round(genre_imp,2),", and", round(award_imp,2))
 
 
 '''
-### You may enjoy: 
+### You may enjoy:
 '''
 st.write("    1: ", recom_books.loc[0]["book_comp"])
 st.write("    2: ", recom_books.loc[1]["book_comp"])
@@ -166,5 +166,5 @@ st.write("   10: ", recom_books.loc[9]["book_comp"])
 
 
 '''
-##### © Dhanya Jothimani 2020 
+##### © Dhanya Jothimani 2020
 '''
