@@ -66,12 +66,6 @@ def load_data():
     return df
 
 
-url = '1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H/consolidated_results.csv'
-path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-1]
-df = pd.read_csv(path)
-
-st.write(df.head())
-
 # Will only run once if already cached
 # can be used once streamlit has git lfs access
 recommendation_data1 = load_data()
