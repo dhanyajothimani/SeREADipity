@@ -66,7 +66,7 @@ def load_data():
     return df
 
 
-url = 'https://drive.google.com/u/0/uc?export=download&confirm=nnwJ&id=1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'
+url = '1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'
 path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 df = pd.read_csv(path)
 
