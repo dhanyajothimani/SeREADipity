@@ -68,6 +68,14 @@ def load_data():
 
 # Will only run once if already cached
 # can be used once streamlit has git lfs access
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+fileDownloaded = drive.CreateFile('id':'1Vme3VrkpygIJjPttPJh5_0aDCjbCL81H'})
+fileDownloaded.GetContentFile('consolidated_results.csv')
+df = pd.read_csv('consolidated_results.csv', delimiter=',')
+df.head()
+
 recommendation_data1 = load_data()
 st.write(recommendation_data1.head())
 
